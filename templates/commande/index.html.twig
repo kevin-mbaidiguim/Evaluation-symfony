@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+{% block body %}
+    <h1>Commandes</h1>
+    <a href="{{ path('commande_new') }}" class="btn btn-primary mb-3">Nouvelle commande</a>
+    <table class="table">
+        <thead><tr><th>Id</th><th>Date</th><th>Montant</th></tr></thead>
+        <tbody>
+            {% for commande in commandes %}
+                <tr>
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.date|date('Y-m-d H:i') }}</td>
+                    <td>{{ commande.montant }}€</td>
+                </tr>
+            {% else %}
+                <tr><td colspan="3">Pas de commandes</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

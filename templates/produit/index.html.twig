@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+{% block body %}
+    <h1>Produits</h1>
+    <a href="{{ path('produit_new') }}" class="btn btn-primary mb-3">Ajouter un produit</a>
+    <table class="table">
+        <thead><tr><th>Libelle</th><th>Prix</th><th>Stock</th><th>Categorie</th></tr></thead>
+        <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.libelle }}</td>
+                    <td>{{ produit.prix }}€</td>
+                    <td>{{ produit.qteStock }}</td>
+                    <td>{{ produit.categorie.libelle }}</td>
+                </tr>
+            {% else %}
+                <tr><td colspan="4">Aucun produit</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
